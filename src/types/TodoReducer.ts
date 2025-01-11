@@ -13,7 +13,7 @@ type AddTodo = {
 
 type ChangeTodo = {
   type: 'change';
-  payload: TodoWithOptionalProps & { id: string };
+  payload: TodoWithOptionalProps;
 }
 
 type DeleteTodo = {
@@ -21,4 +21,4 @@ type DeleteTodo = {
   payload: { id: string }
 }
 
-export type TodoAction = AddTodo | ChangeTodo | DeleteTodo;
+export type TodoActions = AddTodo | ChangeTodo | DeleteTodo;
