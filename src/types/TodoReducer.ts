@@ -21,4 +21,4 @@ type DeleteTodo = {
   payload: { id: string }
 }
 
-export type TodoAction = AddTodo | ChangeTodo | DeleteTodo
+export type TodoAction = AddTodo | ChangeTodo | DeleteTodo;
