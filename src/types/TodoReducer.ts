@@ -18,7 +18,7 @@ type ChangeTodo = {
 
 type DeleteTodo = {
   type: 'delete',
-  payload: { id: string }
+  payload: { id: number }
 }
 
 export type TodoActions = AddTodo | ChangeTodo | DeleteTodo;

@@ -2,6 +2,8 @@ import { StrictMode } from 'react';
 
 import { createRoot } from 'react-dom/client';
 
+import { TodoContextProvider } from './contexts/TodoContext.tsx';
+
 import App from './App.tsx';
 
 const container = document.getElementById('root');
@@ -9,6 +11,8 @@ const root = createRoot(container!);
 
 root.render(
   <StrictMode>
-    <App />
+    <TodoContextProvider>
+      <App />
+    </TodoContextProvider>
   </StrictMode>,
 );
