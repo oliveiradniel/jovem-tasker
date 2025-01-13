@@ -4,13 +4,12 @@ import { createRoot } from 'react-dom/client';
 
 import { TodoContextProvider } from './contexts/TodoComponent.tsx';
 
-import { GlobalStyles } from './styles/global.ts';
+import { GlobalStyles } from './assets/styles/global.ts';
+import styles from './assets/styles/default';
 
 import { ThemeProvider } from 'styled-components';
 
 import App from './App.tsx';
-
-import styles from './styles/default';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);
@@ -20,8 +19,8 @@ root.render(
     <TodoContextProvider>
       <ThemeProvider theme={styles}>
         <GlobalStyles />
+        <App />
       </ThemeProvider>
-      <App />
     </TodoContextProvider>
   </StrictMode>,
 );
