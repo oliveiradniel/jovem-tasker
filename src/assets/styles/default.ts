@@ -2,8 +2,9 @@ export default {
   colors: {
     purple: {
       main: '#8284FA',
-      dark: '#E25858',
+      dark: '#5E60C3',
     },
+    red: '#E25858',
     gray: {
       100: '#F2F2F2',
       200: '#D9D9D9',
