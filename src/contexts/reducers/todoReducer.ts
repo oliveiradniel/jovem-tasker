@@ -12,7 +12,7 @@ export function todoReducer(state: TodoState, action: TodoActions) {
     case 'change': {
       const changedTodos = state.map((todo) => {
         if (todo.id === action.payload.id) {
-          return { todo, ...action.payload };
+          return { ...todo, ...action.payload };
         }
 
         return todo;
