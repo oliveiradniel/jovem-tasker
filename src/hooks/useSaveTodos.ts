@@ -41,8 +41,4 @@ export function useSaveTodos() {
     handleChangesTodo();
 
   }, [handleChangesTodo, gottedInitialData]);
-
-  return {
-    onChangesTodo: handleChangesTodo,
-  };
 }
