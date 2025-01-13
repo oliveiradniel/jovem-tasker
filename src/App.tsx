@@ -5,8 +5,6 @@ export default function App() {
   useSaveTodos();
 
   return (
-    <div>
-
-    </div>
+    <h1>Hello Todo List</h1>
   );
 }
