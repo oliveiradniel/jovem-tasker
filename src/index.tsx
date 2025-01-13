@@ -2,7 +2,7 @@ import { StrictMode } from 'react';
 
 import { createRoot } from 'react-dom/client';
 
-import { TodoContextProvider } from './contexts/TodoContext.tsx';
+import { TodoContextProvider } from './contexts/TodoComponent.tsx';
 
 import App from './App.tsx';
 
