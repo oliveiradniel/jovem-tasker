@@ -4,7 +4,7 @@ export const Container = styled.div`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 220px;
+  height: 205px;
   margin: 0 auto;
   max-width: 800px;
   padding: 100px 10px 0;
@@ -20,5 +20,6 @@ export const Container = styled.div`
 
   .task-input {
     flex: 1;
+    height: 50px;
   }
 `;

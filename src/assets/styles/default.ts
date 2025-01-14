@@ -4,7 +4,10 @@ export default {
       main: '#8284FA',
       dark: '#5E60C3',
     },
-    red: '#E25858',
+    red: {
+      main: '#CE2727',
+      hover: '#C94545',
+    },
     gray: {
       100: '#F2F2F2',
       200: '#D9D9D9',

@@ -1,4 +1,4 @@
-import AddIcon from '../../assets/icons/add.svg?react';
+import AddIcon from '../../assets/icons/add-task.svg?react';
 
 import { Container } from './styles';
 
@@ -13,7 +13,7 @@ export default function Button({ onClick }: ButtonProps) {
         type='button'
         onClick={onClick}
       >
-        Criar <AddIcon />
+        <AddIcon />
       </button>
     </Container>
   );

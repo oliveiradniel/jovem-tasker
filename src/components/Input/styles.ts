@@ -6,6 +6,7 @@ export const Container = styled.input`
   border-radius: 4px;
   color: ${({ theme }) => theme.colors.gray[100]};
   font-size: 16px;
+  height: 100%;
   outline: none;
   padding: 12px 16px;
   width: 100%;
