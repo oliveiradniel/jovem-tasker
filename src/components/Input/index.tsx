@@ -9,13 +9,11 @@ type InputProps = {
 
 export default function Input({ value, placeholder, onChange }: InputProps) {
   return (
-    <Container>
-      <input
-        type="text"
-        placeholder={placeholder}
-        value={value}
-        onChange={onChange}
-      />
-    </Container>
+    <Container
+      type="text"
+      placeholder={placeholder}
+      value={value}
+      onChange={onChange}
+    />
   );
 }
