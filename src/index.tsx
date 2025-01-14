@@ -9,7 +9,7 @@ import styles from './assets/styles/default';
 
 import { ThemeProvider } from 'styled-components';
 
-import App from './App.tsx';
+import App from './components/App';
 
 const container = document.getElementById('root');
 const root = createRoot(container!);

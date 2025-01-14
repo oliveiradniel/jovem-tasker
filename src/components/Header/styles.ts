@@ -8,6 +8,8 @@ export const Container = styled.div`
   margin: 0 auto;
   max-width: 800px;
   padding-top: 22px;
+  background-color: ${({ theme }) => theme.colors.gray[700]};
+  height: 170px;
 
   .logo-container {
     align-items: center;
