@@ -21,12 +21,14 @@ export default function Header() {
 
   return (
     <Container>
-      <div className="logo-container">
-        <img src='/logo.svg' alt="Jovem Tasker" />
-      </div>
+      <img
+        src='/logo.svg'
+        alt="Jovem Tasker"
+        width={270}
+      />
 
-      <div className="new-task-container">
-        <div className="new-task-input">
+      <form>
+        <div className="task-input">
           <Input
             value={taskValue}
             placeholder='Digite uma nova tarefa'
@@ -37,7 +39,7 @@ export default function Header() {
         <Button
           onClick={handleNewTask}
         />
-      </div>
+      </form>
     </Container>
   );
 }
