@@ -14,7 +14,7 @@ export const Container = styled.div`
     padding: 13.5px 18px;
     outline: 0;
 
-    transition: all .2s;
+    transition: all .2s ease-in-out;
 
     &:hover {
       background-color: ${({ theme }) => theme.colors.purple.main};
