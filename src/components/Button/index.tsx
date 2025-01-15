@@ -3,18 +3,18 @@ import AddIcon from '../../assets/icons/add-task.svg?react';
 import { Container } from './styles';
 
 type ButtonProps = {
+  disabled: boolean;
   onClick: () => void;
 }
 
-export default function Button({ onClick }: ButtonProps) {
+export default function Button({ disabled, onClick }: ButtonProps) {
   return (
-    <Container>
-      <button
-        type='button'
-        onClick={onClick}
-      >
-        <AddIcon />
-      </button>
+    <Container
+      type='button'
+      disabled={disabled}
+      onClick={onClick}
+    >
+      <AddIcon />
     </Container>
   );
 }

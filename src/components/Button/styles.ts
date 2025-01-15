@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-  button {
+export const Container = styled.button`
     align-items: center;
     background-color: ${({ theme }) => theme.colors.red.main};
     border: 1px solid transparent;
@@ -20,10 +19,14 @@ export const Container = styled.div`
       background-color:${({ theme }) => theme.colors.red.hover}
     }
 
+    &:disabled {
+      background-color: ${({ theme }) => theme.colors.gray[300]};
+      cursor: default;
+    }
+
     svg {
       height: 26px;
       width: 50px;
       fill: ${({ theme }) => theme.colors.gray[200]}
     }
-  }
 `;

@@ -14,6 +14,8 @@ export default function Header() {
 
   const id = Math.random();
 
+  const isFormValid = taskValue.length > 0;
+
   function handleNewTask() {
     dispatch({ type: 'add', payload: { id, title: taskValue, isDone: false }});
     setTaskValue('');
@@ -37,6 +39,7 @@ export default function Header() {
         </div>
 
         <Button
+          disabled={!isFormValid}
           onClick={handleNewTask}
         />
       </form>
