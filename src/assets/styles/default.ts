@@ -8,6 +8,9 @@ export default {
       main: '#CE2727',
       hover: '#C94545',
     },
+    blue: {
+      main: '#515DCA',
+    },
     gray: {
       100: '#F2F2F2',
       200: '#D9D9D9',

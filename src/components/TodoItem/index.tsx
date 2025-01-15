@@ -1,6 +1,7 @@
 import { ChangeEvent, useContext } from 'react';
 
 import TrashIcon from '../../assets/icons/trash.svg?react';
+import EditIcon from '../../assets/icons/edit.svg?react';
 
 import { Todo } from '../../types/Todo';
 import { TodoContext } from '../../contexts/TodoContext';
@@ -24,21 +25,27 @@ export default function TodoItem({ data }: TodoItemProps) {
 
   return (
     <Container $isDone={data.isDone}>
-      <div className="is-done-container">
-        <input
-          type="check-box"
-          checked={data.isDone}
-          onChange={handleToggleIsDoneTodo}
-        />
-      </div>
+      <input
+        type="checkbox"
+        checked={data.isDone}
+        onChange={handleToggleIsDoneTodo}
+      />
 
       <div className="task-title-container">
-        {data.title}
+        <p>{data.title}</p>
       </div>
 
-      <div className="delete-task-container">
+      <div className="actions-task-container">
         <button
           type='button'
+          className='edit'
+          onClick={() => {}}
+        >
+          <EditIcon />
+        </button>
+        <button
+          type='button'
+          className='delete'
           onClick={handleDeleteTodo}
         >
           <TrashIcon />

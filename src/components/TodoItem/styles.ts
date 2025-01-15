@@ -5,28 +5,30 @@ type ContainerProps = {
 }
 
 export const Container = styled.div<ContainerProps>`
+  align-items: center;
   background-color: ${({ theme}) => theme.colors.gray[500]};
   border: 1px solid ${({ theme}) => theme.colors.gray[400]};
-  border-radius: 6px;
+  border-radius: 4px;
   display: flex;
   gap: 16px;
+  height: 50px;
+  margin: 48px auto;
+  max-width: 800px;
   padding: 20px;
 
-  .is-done-input {
+  input {
     appearance: none;
-    background-color: transparent;
-    border: 2px solid ${({ theme }) => theme.colors.purple.dark};
+    border: 2px solid ${({ theme }) => theme.colors.red.main};
     border-radius: 50%;
     cursor: pointer;
     height: 18px;
-    margin: 0;
+    position: relative;
     width: 18px;
 
-    transform: translateY(0);
     transition: all .2s ease-in-out;
 
     &:checked {
-      background-color: ${({ theme }) => theme.colors.purple.dark};
+      background-color: ${({ theme }) => theme.colors.red.main};
     }
 
     &::before {
@@ -48,36 +50,54 @@ export const Container = styled.div<ContainerProps>`
   }
 
   .task-title-container {
-    color: ${({ theme }) => theme.colors.gray[100]};
     flex: 1;
-    word-break: break-all;
 
-    transition: all .4s ease-in-out;
+    p {
+      color: ${({ theme }) => theme.colors.gray[100]};
+      word-break: break-all;
 
-    ${({ $isDone }) => $isDone && css`
-      text-decoration: line-through;
-    `}
+      transition: all .2s ease-in-out;
+
+      ${({ $isDone }) => $isDone && css`
+        text-decoration: line-through;
+        color: ${({ theme }) => theme.colors.gray[300]};
+      `}
+    }
   }
 
-  .delete-task-container {
+  .actions-task-container {
+    display: flex;
+    gap: 12px;
+
     button {
-      outline: none;
-      border: none;
-      padding: 0 2px;
-      border-radius: 4px;
       background-color: transparent;
+      border: none;
+      display: flex;
+
+      transition: opacity .2s ease-in-out;
 
       &:hover {
-        background-color: ${({ theme }) => theme.colors.gray[400]}
+        opacity: .7;
       }
 
-      svg path {
-        transition: all .3s ease-in-out;
+      svg {
+        width: 22px;
+        height: 22px;
+      }
+    }
 
-        &:hover {
-          fill: ${({ theme }) => theme.colors.red};
-        }
+    .edit {
+      svg {
+        fill: ${({ theme }) => theme.colors.blue.main};
+
+      }
+    }
+
+    .delete {
+      svg {
+        fill: ${({ theme }) => theme.colors.red.main};
       }
     }
   }
 `;
+
