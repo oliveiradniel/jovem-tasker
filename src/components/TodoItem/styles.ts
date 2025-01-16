@@ -4,6 +4,10 @@ type ContainerProps = {
   $isDone: boolean;
 }
 
+type ActionsTaskContainerProps = {
+  $disabled: boolean;
+}
+
 export const Container = styled.div<ContainerProps>`
   align-items: center;
   background-color: ${({ theme}) => theme.colors.gray[500]};
@@ -12,11 +16,10 @@ export const Container = styled.div<ContainerProps>`
   display: flex;
   gap: 16px;
   height: 50px;
-  margin: 48px auto;
-  max-width: 800px;
+  width: 100%;
   padding: 20px;
 
-  input {
+  > input {
     appearance: none;
     border: 2px solid ${({ theme }) => theme.colors.red.main};
     border-radius: 50%;
@@ -52,6 +55,22 @@ export const Container = styled.div<ContainerProps>`
   .task-title-container {
     flex: 1;
 
+    input {
+      background-color: ${({ theme }) => theme.colors.gray[450]};
+      border: none;
+      border-radius: 4px;
+      caret-color: ${({ theme }) => theme.colors.gray[300]};
+      color: ${({ theme }) => theme.colors.gray[100]};
+      font-size: 15px;
+      outline: none;
+      padding: 4px 16px;
+      width: 100%;
+
+      &::placeholder {
+        color: ${({ theme }) => theme.colors.gray[300]};
+      }
+    }
+
     p {
       color: ${({ theme }) => theme.colors.gray[100]};
       word-break: break-all;
@@ -64,40 +83,63 @@ export const Container = styled.div<ContainerProps>`
       `}
     }
   }
+`;
 
-  .actions-task-container {
+export const ActionsTaskContainer = styled.div<ActionsTaskContainerProps>`
+  display: flex;
+  gap: 12px;
+
+  button {
+    align-items: center;
+    background-color: transparent;
+    border: none;
     display: flex;
-    gap: 12px;
 
-    button {
-      background-color: transparent;
-      border: none;
-      display: flex;
+    transition: opacity .2s ease-in-out;
 
-      transition: opacity .2s ease-in-out;
-
-      &:hover {
-        opacity: .7;
-      }
-
-      svg {
-        width: 22px;
-        height: 22px;
-      }
+    &:hover {
+      opacity: .7;
     }
 
-    .edit {
-      svg {
-        fill: ${({ theme }) => theme.colors.blue.main};
-
-      }
+    &:disabled {
+      cursor: default;
+      opacity: 1;
     }
 
-    .delete {
-      svg {
-        fill: ${({ theme }) => theme.colors.red.main};
-      }
+    svg {
+      transition: fill .2s ease-in-out;
+    }
+  }
+
+  .cancel {
+    svg {
+      fill: ${({ theme }) => theme.colors.red.main};
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  .check {
+    svg {
+      fill: green;
+      height: 22px;
+      width: 22px;
+    }
+  }
+
+  .edit {
+    svg {
+      fill: ${({ theme, $disabled }) => $disabled ? theme.colors.gray[400] : theme.colors.blue.main};
+      height: 18px;
+      width: 18px;
+    }
+  }
+
+  .delete {
+    svg {
+      fill: ${({ theme, $disabled }) => $disabled ? theme.colors.gray[400] : theme.colors.red.main};
+      height: 18px;
+      width: 18px;
     }
   }
 `;
-
