@@ -1,6 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Container = styled.input`
+type ContainerProps = {
+  $isError: boolean;
+}
+
+export const Container = styled.input<ContainerProps>`
   background-color: ${({ theme }) => theme.colors.gray[500]};
   border: 2px solid ${({ theme }) => theme.colors.gray[500]};
   border-radius: 4px;
@@ -12,6 +16,10 @@ export const Container = styled.input`
   width: 100%;
 
   transition: border-color .2s ease-in-out;
+
+  ${({ $isError, theme }) => $isError && css`
+    border-color: ${theme.colors.red.hover} !important;
+  `}
 
   &:focus {
     border-color: ${({ theme }) => theme.colors.gray[400]};
