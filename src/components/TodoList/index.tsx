@@ -19,6 +19,7 @@ export default function TodoList() {
     <Container>
       {state.map((task) => (
         <TodoItem
+          key={task.id}
           data={task}
           idOfTheTaskBeingEdited={idOfTheTaskBeingEdited}
           onEditingATask={handleEditingATask}
