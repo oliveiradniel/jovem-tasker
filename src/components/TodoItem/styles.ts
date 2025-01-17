@@ -143,3 +143,8 @@ export const ActionsTaskContainer = styled.div<ActionsTaskContainerProps>`
     }
   }
 `;
+
+export const Error = styled.small`
+  color: ${({ theme }) => theme.colors.red.hover};
+  font-size: 10px;
+`;

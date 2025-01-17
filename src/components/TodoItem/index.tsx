@@ -8,14 +8,13 @@ import EditIcon from '../../assets/icons/edit.svg?react';
 import { Todo } from '../../types/Todo';
 import { TodoContext } from '../../contexts/TodoContext';
 
-import { ActionsTaskContainer, Container } from './styles';
+import { ActionsTaskContainer, Container, Error } from './styles';
 
 type TodoItemProps = {
   data: Todo;
   idOfTheTaskBeingEdited: number | null;
   onEditingATask: (taskId: number) => void;
   onClose: () => void;
-  onSavingTodoChange: ({ id, title }: { id: number, title: string}) => void;
 }
 
 export default function TodoItem({
@@ -23,26 +22,36 @@ export default function TodoItem({
   idOfTheTaskBeingEdited,
   onEditingATask,
   onClose,
-  onSavingTodoChange,
 }: TodoItemProps) {
   useEffect(() => {}, [idOfTheTaskBeingEdited]);
 
   const [titleOfTheTaskBeingEdited, setTitleOfTheTaskBeingEdited] = useState(data.title);
+  const [error, setError] = useState('');
 
   const isEditing = idOfTheTaskBeingEdited === data.id;
   const isNotEditing = !isEditing && !!idOfTheTaskBeingEdited;
 
-  const { dispatch } = useContext(TodoContext);
+  const { state, dispatch } = useContext(TodoContext);
 
   function handleDeleteTodo() {
     dispatch({ type: 'delete', payload: { id: data.id } });
   }
 
   function handleSavingTodoChange() {
-    onSavingTodoChange({
-      id: data.id,
-      title: titleOfTheTaskBeingEdited,
+    const taskExists = state.find(({ title }) => {
+      const taskValueCaptalize = titleOfTheTaskBeingEdited.toUpperCase().trim();
+      const titleCaptalize = title.toUpperCase().trim();
+
+      return taskValueCaptalize === titleCaptalize;
     });
+
+    if (taskExists) {
+      setError('Já existe uma tarefa com este título!');
+      return;
+    }
+
+    setError('');
+    dispatch({ type: 'change', payload: { id: data.id, title: titleOfTheTaskBeingEdited } });
     onClose();
   }
 
@@ -51,58 +60,61 @@ export default function TodoItem({
   }
 
   return (
-    <Container $isDone={data.isDone}>
-      <input
-        type="checkbox"
-        checked={data.isDone}
-        onChange={handleToggleIsDoneTodo}
-      />
+    <>
+      <Container $isDone={data.isDone}>
+        <input
+          type="checkbox"
+          checked={data.isDone}
+          onChange={handleToggleIsDoneTodo}
+        />
 
-      <div className="task-title-container">
-        {isEditing ? (
-          <input
-            type="text"
-            autoFocus
-            value={titleOfTheTaskBeingEdited}
-            placeholder={data.title}
-            onChange={({ target }) => setTitleOfTheTaskBeingEdited(target.value)}
-          />
-        ) : (
-          <p>{data.title}</p>
-        )}
-      </div>
+        <div className="task-title-container">
+          {isEditing ? (
+            <input
+              type="text"
+              autoFocus
+              value={titleOfTheTaskBeingEdited}
+              placeholder={data.title}
+              onChange={({ target }) => setTitleOfTheTaskBeingEdited(target.value)}
+            />
+          ) : (
+            <p>{data.title}</p>
+          )}
+        </div>
 
-      <ActionsTaskContainer $disabled={isNotEditing}>
-        {isEditing ? (
-          <>
-            <button type='button' className='cancel' onClick={onClose}>
-              <CancelIcon fill='#fff' />
-            </button>
-            <button type='button' className='save' onClick={handleSavingTodoChange}>
-              <CheckIcon fill='green' />
-            </button>
-          </>
-        ) : (
-          <>
-            <button
-              type='button'
-              className='edit'
-              onClick={() => onEditingATask(data.id)}
-              disabled={isNotEditing}
+        <ActionsTaskContainer $disabled={isNotEditing}>
+          {isEditing ? (
+            <>
+              <button type='button' className='cancel' onClick={onClose}>
+                <CancelIcon fill='#fff' />
+              </button>
+              <button type='button' className='save' onClick={handleSavingTodoChange}>
+                <CheckIcon fill='green' />
+              </button>
+            </>
+          ) : (
+            <>
+              <button
+                type='button'
+                className='edit'
+                onClick={() => onEditingATask(data.id)}
+                disabled={isNotEditing}
+                >
+                <EditIcon />
+              </button>
+              <button
+                type='button'
+                className='delete'
+                disabled={isNotEditing}
+                onClick={handleDeleteTodo}
               >
-              <EditIcon />
-            </button>
-            <button
-              type='button'
-              className='delete'
-              disabled={isNotEditing}
-              onClick={handleDeleteTodo}
-            >
-              <TrashIcon />
-            </button>
-          </>
-        )}
-      </ActionsTaskContainer>
-    </Container>
+                <TrashIcon />
+              </button>
+            </>
+          )}
+        </ActionsTaskContainer>
+      </Container>
+      {error && <Error>{error}</Error>}
+    </>
   );
 }
