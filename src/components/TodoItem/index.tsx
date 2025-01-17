@@ -33,6 +33,11 @@ export default function TodoItem({
 
   const { state, dispatch } = useContext(TodoContext);
 
+  function handleTitleChange({ target }: ChangeEvent<HTMLInputElement>) {
+    setError('');
+    setTitleOfTheTaskBeingEdited(target.value);
+  }
+
   function handleDeleteTodo() {
     dispatch({ type: 'delete', payload: { id: data.id } });
   }
@@ -75,7 +80,7 @@ export default function TodoItem({
               autoFocus
               value={titleOfTheTaskBeingEdited}
               placeholder={data.title}
-              onChange={({ target }) => setTitleOfTheTaskBeingEdited(target.value)}
+              onChange={handleTitleChange}
             />
           ) : (
             <p>{data.title}</p>
