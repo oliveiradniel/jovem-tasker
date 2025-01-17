@@ -70,6 +70,7 @@ export default function TodoItem({
         <input
           type="checkbox"
           checked={data.isDone}
+          disabled={idOfTheTaskBeingEdited === data.id}
           onChange={handleToggleIsDoneTodo}
         />
 

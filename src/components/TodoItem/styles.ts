@@ -34,6 +34,10 @@ export const Container = styled.div<ContainerProps>`
       background-color: ${({ theme }) => theme.colors.red.main};
     }
 
+    &:disabled {
+      border-color: ${({ theme }) => theme.colors.gray[400]};
+    }
+
     &::before {
       background-color: ${({ theme }) => theme.colors.gray[100]};
       content: '';
