@@ -15,6 +15,7 @@ type TodoItemProps = {
   idOfTheTaskBeingEdited: number | null;
   onEditingATask: (taskId: number) => void;
   onClose: () => void;
+  onSavingTodoChange: ({ id, title }: { id: number, title: string}) => void;
 }
 
 export default function TodoItem({
@@ -22,6 +23,7 @@ export default function TodoItem({
   idOfTheTaskBeingEdited,
   onEditingATask,
   onClose,
+  onSavingTodoChange,
 }: TodoItemProps) {
   useEffect(() => {}, [idOfTheTaskBeingEdited]);
 
@@ -36,8 +38,11 @@ export default function TodoItem({
     dispatch({ type: 'delete', payload: { id: data.id } });
   }
 
-  function handleSaveTodo() {
-    dispatch({ type: 'change', payload: { id: data.id, title: titleOfTheTaskBeingEdited } });
+  function handleSavingTodoChange() {
+    onSavingTodoChange({
+      id: data.id,
+      title: titleOfTheTaskBeingEdited,
+    });
     onClose();
   }
 
@@ -73,7 +78,7 @@ export default function TodoItem({
             <button type='button' className='cancel' onClick={onClose}>
               <CancelIcon fill='#fff' />
             </button>
-            <button type='button' className='check' onClick={handleSaveTodo}>
+            <button type='button' className='save' onClick={handleSavingTodoChange}>
               <CheckIcon fill='green' />
             </button>
           </>

@@ -6,14 +6,23 @@ import TodoItem from '../TodoItem';
 
 import { Container } from './styles';
 
+type HandleSavingTodoChangePrps = {
+  id: number;
+  title: string;
+}
+
 export default function TodoList() {
   const [idOfTheTaskBeingEdited, setIdOfTheTaskBeingEdited] = useState<number | null>(null);
 
-  const { state } = useContext(TodoContext);
+  const { state, dispatch } = useContext(TodoContext);
 
   function handleEditingATask(taskId: number) {
     setIdOfTheTaskBeingEdited(taskId);
   }
+
+  function handleSavingTodoChange({ id, title }: HandleSavingTodoChangePrps) {
+      dispatch({ type: 'change', payload: { id, title } });
+    }
 
   return (
     <Container>
@@ -24,6 +33,7 @@ export default function TodoList() {
           idOfTheTaskBeingEdited={idOfTheTaskBeingEdited}
           onEditingATask={handleEditingATask}
           onClose={() => setIdOfTheTaskBeingEdited(null)}
+          onSavingTodoChange={handleSavingTodoChange}
         />
       ))}
     </Container>

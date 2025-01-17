@@ -119,7 +119,7 @@ export const ActionsTaskContainer = styled.div<ActionsTaskContainerProps>`
     }
   }
 
-  .check {
+  .save {
     svg {
       fill: green;
       height: 22px;
