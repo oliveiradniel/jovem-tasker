@@ -9,8 +9,4 @@ export default defineConfig({
     react(),
     svgr(),
   ],
-  base: '/dist/',
-  build: {
-    outDir: 'dist',
-  },
 });
