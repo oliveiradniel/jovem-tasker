@@ -2,6 +2,8 @@ import { useContext, useState } from 'react';
 
 import { TodoContext } from '../../contexts/TodoContext';
 
+import EmptyBox from '../../assets/icons/empty-box.svg?react';
+
 import TodoItem from '../TodoItem';
 
 import { Container } from './styles';
@@ -19,7 +21,16 @@ export default function TodoList() {
 
   return (
     <Container>
-      <p>{isDone.length} de {state.length} concluídas.</p>
+      {state.length === 0 && (
+        <div className='empty-box'>
+          <p>Ainda não há nenhuma tarefa. Insira uma nova e adicione clicando no ícone ao lado.</p>
+          <EmptyBox />
+        </div>
+      )}
+
+      {state.length > 0 && (
+        <p>{isDone.length} de {state.length} concluídas.</p>
+      )}
       {state.map((task) => (
         <TodoItem
           key={task.id}
