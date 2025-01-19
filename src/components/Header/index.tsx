@@ -2,6 +2,8 @@ import { ChangeEvent, FormEvent, useContext, useState } from 'react';
 
 import { TodoContext } from '../../contexts/TodoContext';
 
+import logo from '../../assets/icons/logo.svg';
+
 import Input from '../Input';
 import Button from '../Button';
 
@@ -46,7 +48,7 @@ export default function Header() {
     <Container>
       <div className='image-container'>
         <img
-          src='/logo.svg'
+          src={logo}
           alt="Jovem Tasker"
           width={270}
         />
