@@ -105,14 +105,16 @@ export default function TodoItem({
             </>
           ) : (
             <>
-              <button
-                type='button'
-                className='edit'
-                onClick={() => onEditingATask(data.id)}
-                disabled={isNotEditing}
-                >
-                <EditIcon />
-              </button>
+              {!data.isDone && (
+                <button
+                  type='button'
+                  className='edit'
+                  onClick={() => onEditingATask(data.id)}
+                  disabled={isNotEditing}
+                  >
+                  <EditIcon />
+                </button>
+              )}
               <button
                 type='button'
                 className='delete'
