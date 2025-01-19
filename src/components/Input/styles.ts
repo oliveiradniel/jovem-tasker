@@ -6,10 +6,12 @@ type ContainerProps = {
 
 export const Container = styled.input<ContainerProps>`
   background-color: ${({ theme }) => theme.colors.gray[500]};
-  border: 2px solid ${({ theme }) => theme.colors.gray[500]};
-  border-radius: 4px;
+  border: 1px solid ${({ theme }) => theme.colors.gray[500]};
+  border-right: none;
+  border-radius: 4px 0 0 4px;
   color: ${({ theme }) => theme.colors.gray[100]};
-  font-size: 16px;
+  font-size: 14px;
+  font-weight: 300;
   height: 100%;
   outline: none;
   padding: 12px 16px;
@@ -22,7 +24,7 @@ export const Container = styled.input<ContainerProps>`
   `}
 
   &:focus {
-    border-color: ${({ theme }) => theme.colors.gray[400]};
+    border-color: ${({ theme }) => theme.colors.gray[300]};
   }
 
   &::placeholder {

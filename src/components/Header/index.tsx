@@ -4,7 +4,6 @@ import { TodoContext } from '../../contexts/TodoContext';
 
 import Input from '../Input';
 import Button from '../Button';
-import FormGroup from '../FormGroup';
 
 import { Container } from './styles';
 
@@ -41,29 +40,28 @@ export default function Header() {
 
   return (
     <Container>
-      <img
-        src='/logo.svg'
-        alt="Jovem Tasker"
-        width={270}
-      />
+      <div className='image-container'>
+        <img
+          src='/logo.svg'
+          alt="Jovem Tasker"
+          width={270}
+        />
+      </div>
 
       <form>
-        <div className="task-input">
-          <FormGroup error={error}>
-            <Input
-              value={taskValue}
-              placeholder='Digite uma nova tarefa'
-              isError={!!error}
-              onChange={handleInputChange}
-            />
-          </FormGroup>
-        </div>
+        <Input
+          value={taskValue}
+          placeholder='Digite uma nova tarefa'
+          isError={!!error}
+          onChange={handleInputChange}
+        />
 
         <Button
           disabled={!isFormValid}
           onClick={handleNewTask}
-        />
+          />
       </form>
+          <small>{error}</small>
     </Container>
   );
 }

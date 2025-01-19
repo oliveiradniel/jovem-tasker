@@ -36,6 +36,7 @@ export const Container = styled.div<ContainerProps>`
 
     &:disabled {
       border-color: ${({ theme }) => theme.colors.gray[400]};
+      cursor: default;
     }
 
     &::before {

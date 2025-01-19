@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  align-items: center;
   display: flex;
   flex-direction: column;
   height: 205px;
@@ -10,16 +9,22 @@ export const Container = styled.div`
   padding: 100px 10px 0;
   background-color: ${({ theme }) => theme.colors.gray[700]};
 
+  .image-container {
+    display: flex;
+    margin: 0 auto;
+  }
+
   form {
     align-items: center;
     display: flex;
-    gap: 40px;
+    height: 40px;
     margin-top: 40px;
     width: 100%;
   }
 
-  .task-input {
-    flex: 1;
-    height: 50px;
+  small {
+    color: ${({ theme }) => theme.colors.red.hover};
+    font-size: 10px;
+    margin-top: 4px;
   }
 `;
