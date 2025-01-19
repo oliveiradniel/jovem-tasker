@@ -1,4 +1,4 @@
-import { useSaveTodos } from '../../hooks/useSaveTodos';
+// import { useSaveTodos } from '../../hooks/useSaveTodos';
 
 import Header from '../Header';
 
@@ -7,7 +7,7 @@ import TodoList from '../TodoList';
 
 export default function App() {
   // Monitoring all changes on todos and save in localStorage
-  useSaveTodos();
+  // useSaveTodos();
 
   return (
     <Container>
