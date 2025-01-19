@@ -17,7 +17,7 @@ export function useSaveTodos() {
   const handleChangesTodo = useCallback(() => {
     // const value = AES.encrypt(JSON.stringify(state), SECRET_KEY);
 
-    localStorage.setItem(LOCAL_STORAGE_KEY, state.toString());
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(state));
   }, [state]);
 
   useEffect(() => {
