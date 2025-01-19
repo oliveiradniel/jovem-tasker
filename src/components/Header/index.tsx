@@ -1,4 +1,4 @@
-import { ChangeEvent, useContext, useState } from 'react';
+import { ChangeEvent, FormEvent, useContext, useState } from 'react';
 
 import { TodoContext } from '../../contexts/TodoContext';
 
@@ -17,7 +17,11 @@ export default function Header() {
 
   const isFormValid = taskValue.length > 0;
 
-  function handleNewTask() {
+  function handleNewTask(event: FormEvent<HTMLFormElement>) {
+    event.preventDefault();
+
+    if (taskValue.length === 0) return;
+
     const taskExists = state.find(({ title }) => {
       const taskValueCaptalize = taskValue.toUpperCase().trim();
       const titleCaptalize = title.toUpperCase().trim();
@@ -48,7 +52,7 @@ export default function Header() {
         />
       </div>
 
-      <form>
+      <form onSubmit={handleNewTask}>
         <Input
           value={taskValue}
           placeholder='Digite uma nova tarefa'
@@ -58,7 +62,6 @@ export default function Header() {
 
         <Button
           disabled={!isFormValid}
-          onClick={handleNewTask}
           />
       </form>
           <small>{error}</small>
