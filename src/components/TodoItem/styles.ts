@@ -124,6 +124,12 @@ export const ActionsTaskContainer = styled.div<ActionsTaskContainerProps>`
   }
 
   .save {
+    &:disabled {
+      svg {
+        fill: ${({ theme }) => theme.colors.gray[400]};
+      }
+    }
+
     svg {
       fill: green;
       height: 22px;

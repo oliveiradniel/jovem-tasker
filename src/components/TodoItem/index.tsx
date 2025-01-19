@@ -94,7 +94,12 @@ export default function TodoItem({
               <button type='button' className='cancel' onClick={onClose}>
                 <CancelIcon fill='#fff' />
               </button>
-              <button type='button' className='save' onClick={handleSavingTodoChange}>
+              <button
+                type='button'
+                className='save'
+                disabled={titleOfTheTaskBeingEdited === data.title}
+                onClick={handleSavingTodoChange}
+              >
                 <CheckIcon fill='green' />
               </button>
             </>

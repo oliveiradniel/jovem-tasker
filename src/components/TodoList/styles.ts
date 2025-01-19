@@ -7,4 +7,9 @@ export const Container = styled.div`
   margin: 64px auto;
   max-width: 800px;
   padding: 0 10px;
+
+  p {
+    color: ${({ theme }) => theme.colors.gray[300]};
+    font-size: 12px;
+  }
 `;

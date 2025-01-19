@@ -11,13 +11,15 @@ export default function TodoList() {
 
   const { state } = useContext(TodoContext);
 
+  const isDone = state.filter(({ isDone }) => isDone === true);
+
   function handleEditingATask(taskId: number) {
     setIdOfTheTaskBeingEdited(taskId);
   }
 
   return (
     <Container>
-
+      <p>{isDone.length} de {state.length} concluídas.</p>
       {state.map((task) => (
         <TodoItem
           key={task.id}
